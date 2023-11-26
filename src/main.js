@@ -8,6 +8,8 @@ import Card from 'primevue/card';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Row from 'primevue/row';
+import InputText from 'primevue/inputtext';
+
 
 
 import App from './App.vue';
@@ -26,5 +28,6 @@ app.component('Card', Card);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
 app.component('Row', Row);
+app.component('InputText', InputText);
 
 app.mount('#app');

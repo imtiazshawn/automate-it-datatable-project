@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="table">
-      <StudentList :students="students" />
+      <StudentsList :students="students" />
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
   import { ref, onMounted } from 'vue';
   import studentInfo from '../api/student_info.json';
   // Components
-  import StudentList from '../components/StudentList.vue';
+  import StudentsList from '../components/StudentsList.vue';
 
   const students = ref([]);
 

@@ -62,8 +62,9 @@ const isOutsideClicked = (event) => {
 
 <template>
     <div class="layout-topbar">
-        <router-link to="/" class="layout-topbar-logo">
-            <span>Test Project</span>
+        <router-link to="/" class="layout-topbar-logo" style="display: flex; gap: 1rem;">
+            <i class="pi pi-hashtag" style="font-size: 1.5rem"></i>
+            <span class="">Test Project</span>
         </router-link>
 
         <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
@@ -82,10 +83,6 @@ const isOutsideClicked = (event) => {
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-user"></i>
                 <span>Profile</span>
-            </button>
-            <button @click="onSettingsClick()" class="p-link layout-topbar-button">
-                <i class="pi pi-cog"></i>
-                <span>Settings</span>
             </button>
         </div>
     </div>
