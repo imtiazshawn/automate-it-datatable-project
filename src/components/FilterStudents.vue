@@ -38,7 +38,7 @@
                     <InputText v-model="filterModel.value" type="text" class="p-column-filter" placeholder="Search by Name" />
                 </template>
             </Column>
-            <Column field="grade" header="Grade" style="min-width: 12rem">
+            <Column field="academic_details.grade" header="Grade" style="min-width: 12rem">
                 <template #body="{ data }">
                     {{ data.academic_details.grade }}
                 </template>
@@ -46,7 +46,7 @@
                     <InputText v-model="filterModel.value" type="text" class="p-column-filter" placeholder="Search by Grade" />
                 </template>
             </Column>
-            <Column field="math" header="Math" style="min-width: 12rem">
+            <Column field="academic_details.marks.math" header="Math" style="min-width: 12rem">
                 <template #body="{ data }">
                     {{ data.academic_details.marks.math }}
                 </template>
@@ -54,7 +54,7 @@
                     <InputText v-model="filterModel.value" type="text" class="p-column-filter" placeholder="Search by Marks" />
                 </template>
             </Column>
-            <Column field="science" header="Science" style="min-width: 12rem">
+            <Column field="academic_details.marks.science" header="Science" style="min-width: 12rem">
                 <template #body="{ data }">
                     {{ data.academic_details.marks.science }}
                 </template>
@@ -62,7 +62,7 @@
                     <InputText v-model="filterModel.value" type="text" class="p-column-filter" placeholder="Search by Marks" />
                 </template>
             </Column>
-            <Column field="english" header="English" style="min-width: 12rem">
+            <Column field="academic_details.marks.english" header="English" style="min-width: 12rem">
                 <template #body="{ data }">
                     {{ data.academic_details.marks.english }}
                 </template>
@@ -70,7 +70,7 @@
                     <InputText v-model="filterModel.value" type="text" class="p-column-filter" placeholder="Search by Marks" />
                 </template>
             </Column>
-            <Column field="contact" header="Contact" style="min-width: 12rem">
+            <Column field="guardian_details.contact" header="Contact" style="min-width: 12rem">
                 <template #body="{ data }">
                     {{ data.guardian_details.contact }}
                 </template>
@@ -104,11 +104,11 @@
             roll: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
             student_id: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
             name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-            grade: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-            math: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-            science: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-            english: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-            contact: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
+            'academic_details.grade': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'academic_details.marks.math': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
+            'academic_details.marks.science': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
+            'academic_details.marks.english': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
+            'guardian_details.contact': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
         };
     };
 
