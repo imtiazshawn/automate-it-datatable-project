@@ -2,7 +2,7 @@
 <template>
     <div class="card">
         <DataTable v-model:filters="filters" :value="students" paginator showGridlines :rows="10" dataKey="id"
-                filterDisplay="menu" :loading="loading" :globalFilterFields="['name', 'country.name', 'representative.name', 'balance', 'status']">
+                filterDisplay="menu" :loading="loading">
             <template #header>
                 <div class="flex justify-content-between">
                     <Button type="button" icon="pi pi-filter-slash" label="Clear" outlined @click="clearFilter()" />
