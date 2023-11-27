@@ -79,6 +79,10 @@
                 </template>
             </Column>
         </DataTable>
+        <div class="buttons">
+            <Button type="button" @click="exportToExcel">Export Excel</Button>
+            <Button type="button" @click="exportToPdf">Export Pdf</Button>
+        </div>
     </div>
 </template>
 
@@ -86,6 +90,9 @@
     import { ref, onMounted } from 'vue';
     import { StudentsList } from '../api/StudentsList';
     import { FilterMatchMode, FilterOperator } from 'primevue/api';
+    import * as XLSX from 'xlsx';
+    import jsPDF from 'jspdf';
+    import autoTable from 'jspdf-autotable';
 
     const students = ref();
     const filters = ref();
@@ -124,5 +131,67 @@
 
             return d;
         });
+    };
+
+    // Export Excel
+    const exportToExcel = () => {
+        const data = students.value.map(student => ({
+            Roll: student.roll,
+            'Student ID': student.student_id,
+            Name: student.name,
+            Grade: student.academic_details.grade,
+            Math: student.academic_details.marks.math,
+            Science: student.academic_details.marks.science,
+            English: student.academic_details.marks.english,
+            "Father's Name": student.guardian_details.father_name,
+            "Mother's Name": student.guardian_details.mother_name,
+            Relationship: student.guardian_details.relationship,
+            Contact: student.guardian_details.contact
+        }));
+
+        const ws = XLSX.utils.json_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Students');
+        const filename = 'students.xlsx';
+        XLSX.writeFile(wb, filename);
+    };
+
+    // Export PDF
+    const exportToPdf = () => {
+        const columns = [
+        { title: 'Roll', dataKey: 'roll' },
+        { title: 'Student ID', dataKey: 'student_id' },
+        { title: 'Name', dataKey: 'name' },
+        { title: 'Grade', dataKey: 'academic_details.grade' },
+        { title: 'Math', dataKey: 'academic_details.marks.math' },
+        { title: 'Science', dataKey: 'academic_details.marks.science' },
+        { title: 'English', dataKey: 'academic_details.marks.english' },
+        { title: "Father's Name", dataKey: 'guardian_details.father_name' },
+        { title: "Mother's Name", dataKey: 'guardian_details.mother_name' },
+        { title: 'Relationship', dataKey: 'guardian_details.relationship' },
+        { title: 'Contact', dataKey: 'guardian_details.contact' },
+        ];
+
+        const data = students.value.map(student => ({
+        roll: student.roll,
+        student_id: student.student_id,
+        name: student.name,
+        'academic_details.grade': student.academic_details.grade,
+        'academic_details.marks.math': student.academic_details.marks.math,
+        'academic_details.marks.science': student.academic_details.marks.science,
+        'academic_details.marks.english': student.academic_details.marks.english,
+        'guardian_details.father_name': student.guardian_details.father_name,
+        'guardian_details.mother_name': student.guardian_details.mother_name,
+        'guardian_details.relationship': student.guardian_details.relationship,
+        'guardian_details.contact': student.guardian_details.contact,
+        }));
+
+        const pdf = new jsPDF();
+        pdf.autoTable({
+        head: [columns.map(column => column.title)],
+        body: data.map(row => columns.map(column => row[column.dataKey])),
+        });
+
+        pdf.save('students.pdf');
     };
 </script>
