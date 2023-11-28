@@ -82,7 +82,6 @@
         <div class="buttons">
             <Button type="button" @click="exportToExcel">Export Excel</Button>
             <Button type="button" @click="exportToPdf">Export Pdf</Button>
-            <Button type="button" @click="checkConsole">Check Console</Button>
         </div>
     </div>
 </template>
@@ -133,11 +132,6 @@
             return d;
         });
     };
-
-    // Check Console
-    const checkConsole = () => {
-        console.log(event.filteredValue);
-    }
 
     // Export Excel
     const exportToExcel = () => {
