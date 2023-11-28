@@ -77,13 +77,13 @@ const isOutsideClicked = (event) => {
 
         <div class="layout-topbar-menu" :class="topbarMenuClasses">
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
-                <i class="pi pi-calendar"></i>
-                <span>Calendar</span>
-            </button>
-            <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-user"></i>
                 <span>Profile</span>
             </button>
+            <a href="https://github.com/imtiazshawn/automate-it-datatable-project" class="p-link layout-topbar-button" target="_blank">
+                <i class="pi pi-github"></i>
+                <span>Source Code</span>
+            </a>
         </div>
     </div>
 </template>
