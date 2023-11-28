@@ -106,5 +106,6 @@
     justify-content: end;
     align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
   }
 </style>
